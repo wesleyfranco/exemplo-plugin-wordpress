@@ -1,0 +1,12 @@
+{% extends "@MyPlugin/layout/base.html" %}
+{% block content %}
+	<ul>		
+		{% for empresa in empresas %}
+			<li><a href="{{ route_url('MyPlugin::empresaSingle', {'id': empresa['id'], 'slug': empresa['slug']}) }}">{{ empresa['nome'] }}</a></li>
+			<li>{{ empresa['localizacao'] }}</li>
+			<li>{{ empresa['Categorias'][0]['titulo'] }}</li><hr/>
+		{% else %}
+			Nenhuma empresa cadastrada.
+		{% endfor %}
+	</ul>
+{% endblock %}

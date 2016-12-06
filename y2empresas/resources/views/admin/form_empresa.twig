@@ -1,0 +1,62 @@
+<div class="wrap">
+	<h2>{{ title }}</h2><br/>
+	<div class="postbox" id="boxid">		
+		<div class="inside">
+			<form method="POST" action="{{ panel_url('MyPlugin::mainPanel', {'action':'save'}) }}" enctype="multipart/form-data">
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row">
+								<label for="nome">Nome</label>
+							</th>
+							<td>
+								<input name="nome" type="text" placeholder="Nome da empresa" id="nome" value="{{ empresa['nome'] }}" required />
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="localizacao">Localização</label>
+							</th>
+							<td>
+								<input name="localizacao" type="text" placeholder="Localização da empresa" id="localizacao" value="{{ empresa['localizacao'] }}" required />
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="categoria_id">Categoria</label>
+							</th>
+							<td>
+								<select id="categoria_id" name="categoria_id" required>
+									<option value="">Escolha uma categoria</option>
+									{% for categoria in categorias %}
+										<option value="{{ categoria.id }}" {% if categoria.id == categoria_id_empresa %} selected="selected" {% endif %}>{{ categoria.titulo }}</option>
+									{% endfor %}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="imagem">Imagem</label>
+							</th>
+							<td>
+								<input type="file" name="imagem" id="imagem" />
+								{% if empresa['imagem'] %}
+									<br/>
+									<a href="{{ empresa['imagem'] }}" class="fancybox">
+										<img src="{{ empresa['imagem'] }}" style="width:50px; height: 50px" />
+									</a>
+								{% endif %}						
+							</td>	
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" name="submit" class="button button-primary" value="Salvar" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="hidden" name="id" value="{{ empresa['id'] }}">				
+			</form>
+		</div>
+	</div>
+</div>

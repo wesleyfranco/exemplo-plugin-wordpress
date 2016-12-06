@@ -1,0 +1,14 @@
+{{ get_header() }}
+   
+    <div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			<article id="post-{{ the_ID() }}" {{ post_class() }}>
+				<div class="entry-content">
+					{% block content %}{% endblock %}
+				</div>
+			</article>
+			{% include '@MyPlugin/layout/parts/pagination.html' %}			
+		</main>
+	</div>    
+		
+{{ get_footer() }}        

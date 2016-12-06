@@ -1,0 +1,27 @@
+<div class="wrap">
+	<h2>{{ title }}</h2><br/>
+	<div class="postbox" id="boxid">		
+		<div class="inside">
+			<form method="POST" action="{{ panel_url('MyPlugin::mainCategoria', {'action':'save'}) }}">
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row">
+								<label for="titulo">Título</label>
+							</th>
+							<td>
+								<input name="titulo" type="text" placeholder="Nome da categoria" id="titulo" value="{{ categoria.titulo }}" required />
+							</td>
+						</tr>						
+						<tr>
+							<td>
+								<input type="submit" name="submit" class="button button-primary" value="Salvar" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="hidden" name="id" value="{{ categoria.id }}">	
+			</form>
+		</div>
+	</div>
+</div>
